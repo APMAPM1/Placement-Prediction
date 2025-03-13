@@ -2,21 +2,105 @@
 <html>
 <head>
     <title>Placement Predictor</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .form-group {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        label {
+            font-weight: bold;
+        }
+        input {
+            padding: 5px;
+            width: 150px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            text-align: right;
+        }
+        input[type="submit"] {
+            display: block;
+            width: 50%;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            margin: 20px auto 0; /* Centers the button */
+            text-align: center;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Placement Prediction</h1>
     <form method="POST" action="/predict">
-        <label>CGPA:</label><input type="number" step="0.1" name="CGPA" required><br>
-        <label>Internships:</label><input type="number" name="Internships" required><br>
-        <label>Projects:</label><input type="number" name="Projects" required><br>
-        <label>Workshops/Certifications:</label><input type="number" name="Workshops/Certifications" required><br>
-        <label>Aptitude Test Score:</label><input type="number" name="AptitudeTestScore" required><br>
-        <label>Soft Skills Rating:</label><input type="number" step="0.1" name="SoftSkillsRating" required><br>
-        <label>Extracurricular Activities:</label><input type="number" name="ExtracurricularActivities" required><br>
-        <label>Placement Training:</label><input type="number" name="PlacementTraining" required><br>
-        <label>SSC Marks:</label><input type="number" name="SSC_Marks" required><br>
-        <label>HSC Marks:</label><input type="number" name="HSC_Marks" required><br>
+        <div class="form-group">
+            <label>CGPA (out of 10):</label>
+            <input type="number" step="0.1" name="CGPA" required>
+        </div>
+        <div class="form-group">
+            <label>No. of Internships:</label>
+            <input type="number" name="Internships" required>
+        </div>
+        <div class="form-group">
+            <label>No. of Projects:</label>
+            <input type="number" name="Projects" required>
+        </div>
+        <div class="form-group">
+            <label>No. of Workshops/Certifications:</label>
+            <input type="number" name="Workshops/Certifications" required>
+        </div>
+        <div class="form-group">
+            <label>Aptitude Test Score (out of 100):</label>
+            <input type="number" name="AptitudeTestScore" required>
+        </div>
+        <div class="form-group">
+            <label>Soft Skills Rating (out of 10):</label>
+            <input type="number" step="0.1" name="SoftSkillsRating" required>
+        </div>
+        <div class="form-group">
+            <label>Extracurricular Activities (Yes/No):</label>
+            <input type="text" name="ExtracurricularActivities" required>
+        </div>
+        <div class="form-group">
+            <label>Placement Training (Yes/No):</label>
+            <input type="text" name="PlacementTraining" required>
+        </div>
+        <div class="form-group">
+            <label>SSC Marks (out of 10):</label>
+            <input type="number" name="SSC_Marks" required>
+        </div>
+        <div class="form-group">
+            <label>HSC Marks (out of 10):</label>
+            <input type="number" name="HSC_Marks" required>
+        </div>
         <input type="submit" value="Predict">
     </form>
     {% if prediction_text %}
